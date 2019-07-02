@@ -7,7 +7,12 @@
 	<title>AXA Be Surprise - Customer Consent</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 	<link rel="stylesheet" href="assets/css/main.css">
+    <script>
+        const BASE_URL = 'http://localhost/netwerk/axasurprize';
+        const BASE_URL_API = 'http://192.168.1.72/axa';
+    </script>
 </head>
 <body>
 
@@ -50,8 +55,8 @@
 						<p class="text-center mb-0">Mengapa memerlukan persetujuan Anda?</p>
 						<a href="#" class="text-center mb-3">Cari informasinya disini</a>
 						<div class="row justify-content-center">
-							<a href="#" class="d-inline-block btn">Batal</a>
-							<a href="#" class="d-inline-block btn red">Setuju</a>
+							<a id="cancel-concent" href="javascript:void(0)" class="d-inline-block btn">Batal</a>
+							<a id="agree-concent" href="javascript:void(0)" class="d-inline-block btn red">Setuju</a>
 						</div>
 					</div>
 				</div>
@@ -63,6 +68,75 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 	<script src="assets/js/main.js"></script>
+    <script>
+        const campaignId = localStorage.getItem('campaignId');
+        const userId = localStorage.getItem('userId');
+
+        $.ajax({
+            url: `${BASE_URL_API}/campaign/voucher/${campaignId}?id=${userId}`,
+            cache: false,
+            error: function(err){
+                if (err.status == 404){
+                    window.location.replace(`${BASE_URL}/404-not-found.php`);
+
+                    return;
+                }
+
+                $.alert({
+                    title: 'Error!',
+                    content: err.responseJSON.message,
+                });
+            },
+        })
+
+        $("#cancel-concent").on('click', function(){
+            submitConsent(0);
+        });
+
+        $("#agree-concent").on('click', function(){
+            submitConsent(1);
+        })
+
+
+        function submitConsent(status) {
+            const payload = { id: userId, status };
+
+            $.ajax({
+                url: `${BASE_URL_API}/campaign/user/${campaignId}/consent`,
+                cache: false,
+                type: 'PUT',
+                dataType: 'json',
+                data: JSON.stringify(payload),
+                contentType: "application/json",
+                success: function(result){
+                    localStorage.setItem('userId', result.data.id);
+
+                    if (status == 1) {
+                        // console.log(result);
+                        window.location.href = `${BASE_URL}/e-voucher.php?v=${result.data.voucher_code}`;
+                    } else {
+                        window.location.replace(`${BASE_URL}/home.php`);
+                    }
+                },
+                error: function(err){
+                    if (err.status == 404){
+                        window.location.replace(`${BASE_URL}/404-not-found.php`);
+
+                        return;
+                    }
+
+                    $.alert({
+                        title: 'Error!',
+                        content: err.responseJSON.message,
+                    });
+                },
+                complete: function(){
+
+                }
+            });
+        }
+    </script>
 </body>
 </html>

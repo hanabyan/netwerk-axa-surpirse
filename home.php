@@ -8,6 +8,10 @@
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 	<link rel="stylesheet" href="assets/css/main.css">
+    <script>
+        const BASE_URL = 'http://localhost/netwerk/axasurprize';
+        const BASE_URL_API = 'http://192.168.1.72/axa';
+    </script>
 </head>
 <body>
 
@@ -27,7 +31,7 @@
 				<div class="row">
 					<div class="col-12 text-center">
 						<p>Redeem voucher dan dapatkan diskon Rp. 5.000 untuk setiap pembelian 1 beverage di merchant kami.</p>
-						<a href="e-voucher.php" class="btn red thin">Redeem Sekarang</a>
+						<a href="redeem-voucher.php" class="btn red thin">Redeem Sekarang</a>
 					</div>
 				</div>
 			</div>
@@ -73,7 +77,7 @@
 				<div class="row">
 					<div class="col-12 text-center">
 						<p>Dapatkan Voucher Diskon Rp. 5000!</p>
-						<a href="#" class="btn red thin">Redeem Sekarang!</a>
+						<a href="redeem-voucher.php" class="btn red thin">Redeem Sekarang!</a>
 					</div>
 				</div>
 			</div>
@@ -90,5 +94,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/main.js"></script>
+    <script>
+        localStorage.setItem('campaignId', 1);
+    </script>
 </body>
 </html>

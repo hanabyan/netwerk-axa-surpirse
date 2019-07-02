@@ -7,6 +7,7 @@
 	<title>AXA Be Surprise - Kode e-Voucher</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/voucher.css">
 	<link rel="stylesheet" href="assets/css/jquery.countdown.css">
@@ -39,7 +40,7 @@
 				</div>
 				<div class="row justify-content-center">
 					<a href="#" class="d-inline-block btn mb-3">Keluar</a>
-					<a href="#" class="d-inline-block btn red mb-3">Redeemed</a>
+					<a href="selamat.php" class="d-inline-block btn red mb-3">Redeemed</a>
 				</div>
 				<div class="row">
 					<div class="col-12">
@@ -57,6 +58,7 @@
 	<script src="assets/js/jquery.plugin.min.js"></script>
 	<script src="assets/js/jquery.countdown.min.js"></script>
 	<script src="assets/js/jquery.countdown-id.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script>
 		//doc here http://keith-wood.name/countdownRef.html
