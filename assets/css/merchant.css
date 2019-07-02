@@ -1,0 +1,70 @@
+.merchant-detail {
+	padding-top: 40px;
+}
+
+.merchant-detail .name {
+	font-family: "Avenir Medium", sans-serif;
+	font-size: 17.99px;
+	color: #00008f;
+	margin-bottom: 10px;
+}
+
+.merchant-detail .position {
+	font-family: "Avenir Heavy", sans-serif;
+	font-size: 21.32px;
+	color: #161616;
+}
+
+.merchant-detail .address {
+	font-family: "Avenir Medium", sans-serif;
+	font-size: 15.99px;
+	color: #999;
+}
+
+.form-wrapper {
+	padding-top: 50px;
+}
+
+*[type="submit"] {
+	margin-top: 140px;
+}
+
+.form-group:nth-last-child(1) {
+	margin-bottom: 0;
+}
+
+section:nth-last-child(1) {
+	padding-bottom: 0;
+}
+
+@media (max-width: 375px) {
+	
+	.merchant-detail .position {
+		margin-bottom: 5px !important;
+	}
+
+	.form-wrapper {
+		padding-top: 30px;
+	}
+
+	*[type="submit"] {
+		margin-top: 80px;
+	}
+
+	.merchant-detail {
+		text-align: center;
+	}
+
+}
+
+@media (max-width: 320px) {
+
+	.form-wrapper {
+		padding-top: 25px;
+	}
+
+	*[type="submit"] {
+		margin-top: 50px;
+	}
+
+}

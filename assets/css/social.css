@@ -1,0 +1,49 @@
+.social-wrapper {
+	max-width: 480px;
+	margin: 0 auto;
+	margin-top: -1px;
+}
+
+.social-wrapper a i {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	margin: 0 10px 10px;
+	color: #FFF;
+	font-size: 36px;
+	line-height: 64px;
+}
+
+.social-wrapper a i.fb {
+	background-color: #475993;
+}
+
+.social-wrapper a i.tw {
+	background-color: #76a9ea;
+}
+
+.social-wrapper a i.wa {
+	background-color: #7ad06d;
+}
+
+@media (max-width: 425px) {
+	
+	.social-wrapper a i {
+		width: 60px;
+		height: 60px;
+		font-size: 30px;
+		line-height: 60px;
+	}
+
+}
+
+@media (max-width: 320px) {
+
+	.social-wrapper a i {
+	  width: 55px;
+	  height: 55px;
+	  font-size: 25px;
+	  line-height: 55px;
+	}
+
+}
