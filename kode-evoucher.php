@@ -62,9 +62,12 @@
 	<script src="assets/js/main.js"></script>
 	<script>
 		//doc here http://keith-wood.name/countdownRef.html
+        let timerDuration = 300; // seconds
+
 		$(function() {
 			$('#timer').countdown({
 				// until: new Date('Wed Jun 19 2019 12:00:00'),
+                until: new Date(new Date().getTime() + (timerDuration * 1000)),
 				format: 'MS'
 			});
 		});
