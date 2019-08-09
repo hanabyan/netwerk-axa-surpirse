@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="assets/css/main.css">
     <script>
         const BASE_URL = 'http://localhost/netwerk/axasurprize';
-        const BASE_URL_API = 'http://192.168.1.72/axa';
+        const BASE_URL_API = 'http://11.11.11.110/axa';
     </script>
 </head>
 <body>
@@ -27,9 +27,9 @@
 							<div class="img-wrapper">
 								<img src="assets/img/icon/person-gray.png" alt="" class="img-fluid">
 							</div>
-							<p class="name">Agung Laksana</p>
-							<p class="email">agung.laksana@gmail.com</p>
-							<p>0812 1801 1399</p>
+							<p class="name"><!-- name here --></p>
+							<p class="email"><!-- email here --></p>
+							<p class="mobile"><!-- mobile here --></p>
 						</div>
 					</div>
 				</div>
@@ -75,8 +75,13 @@
         const userId = localStorage.getItem('userId');
 
         $.ajax({
-            url: `${BASE_URL_API}/campaign/voucher/${campaignId}?id=${userId}`,
+            url: `${BASE_URL_API}/campaign/user/${campaignId}?id=${userId}`,
             cache: false,
+            success: function(result) {
+                $('.profile-detail .name').text(result.data.name);
+                $('.profile-detail .email').text(result.data.email);
+                $('.profile-detail .mobile').text(result.data.phone);
+            },
             error: function(err){
                 if (err.status == 404){
                     window.location.replace(`${BASE_URL}/404-not-found.php`);

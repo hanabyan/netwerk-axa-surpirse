@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="assets/css/voucher.css">
     <script>
         const BASE_URL = 'http://localhost/netwerk/axasurprize';
-        const BASE_URL_API = 'http://192.168.1.72/axa';
+        const BASE_URL_API = 'http://11.11.11.110/axa';
 
         const urlParams = new URLSearchParams(window.location.search);
         const voucher = urlParams.get('v');

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <script>
         const BASE_URL = 'http://localhost/netwerk/axasurprize';
-        const BASE_URL_API = 'http://192.168.1.72/axa';
+        const BASE_URL_API = 'http://11.11.11.110/axa';
     </script>
 </head>
 <body>
@@ -108,26 +108,9 @@
 											<option value="12">Desember</option>
 										</select>
 										<select class="cl-black bd-gray rounded form-control date input-year" required>
-											<option value="1990" selected>1990</option>
-											<option value="1991">1991</option>
-											<option value="1992">1992</option>
-											<option value="1993">1993</option>
-											<option value="1994">1994</option>
-											<option value="1995">1995</option>
-											<option value="1996">1996</option>
-											<option value="1997">1997</option>
-											<option value="1998">1998</option>
-											<option value="1999">1999</option>
-											<option value="2000">2000</option>
-											<option value="2001">2001</option>
-											<option value="2002">2002</option>
-											<option value="2003">2003</option>
-											<option value="2004">2004</option>
-											<option value="2005">2005</option>
-											<option value="2006">2006</option>
-											<option value="2007">2007</option>
-											<option value="2008">2008</option>
-											<option value="2009">2009</option>
+											<?php for($i = 1945; $i<= 2009; $i++ ): ?>
+											<option value="<?php echo $i; ?>" <?php echo ($i == 1990 ? 'selected' : '') ?>><?php echo $i; ?></option>
+                                            <?php endfor; ?>
 										</select>
 									</div>
 								</div>

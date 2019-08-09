@@ -10,6 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<link rel="stylesheet" href="assets/css/merchant.css">
+    <script>
+        const BASE_URL = 'http://localhost/netwerk/axasurprize';
+        const BASE_URL_API = 'http://11.11.11.110/axa';
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const voucher = urlParams.get('v');
+    </script>
 </head>
 <body>
 
@@ -22,9 +29,10 @@
 						<h2 class="text-center cl-blue">Pilihan Merchant Anda</h2>
 						<div class="content-wrap">
 							<div class="merchant-detail" style="padding-top: 0;">
-								<p class="position mb-0">Ottoman's Coffe Brewers</p>
-								<p class="address mb-0">Jl. Ir. H. Juanda No.155, Lb. Siliwangi, Coblong, Kota Bandung</p>
-								<a href="#" class="btn blue mt-3 ml-0 thin">Ubah Merchant</a>
+								<p id="merchant-name" class="position mb-0"></p>
+								<p id="merchant-address" class="address mb-0"></p>
+								<p id="merchant-city" class="address mb-0"></p>
+								<a href="<?php echo "http://localhost/netwerk/axasurprize/pilih-merchant.php?v=".$_GET['v'] ; ?>" class="btn blue mt-3 ml-0 thin">Ubah Merchant</a>
 							</div>
 							<hr class="mt-4 mb-5" />
 							<div class="text-center">
@@ -37,7 +45,7 @@
 			</div>
 			<div class="text-center">
 				<a href="#" class="mb-3">* Syarat & Ketentuan</a>
-				<a href="kode-evoucher.php" class="btn red">Klaim Sekarang</a>
+				<a href="<?php echo "kode-evoucher.php?v=" . $_GET['v']; ?> " class="btn red">Klaim Sekarang</a>
 			</div>
 		</section>
 	</main>
@@ -48,5 +56,14 @@
 	<script src="assets/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 	<script src="assets/js/main.js"></script>
+    <script>
+        var merchantName = localStorage.getItem('merchantName');
+        var merchantAddress = localStorage.getItem('merchantAddress');
+        var merchantCity = localStorage.getItem('merchantCity');
+
+        $('.merchant-detail #merchant-name').text(merchantName);
+        $('.merchant-detail #merchant-address').text(merchantAddress);
+        $('.merchant-detail #merchant-city').text(merchantCity);
+    </script>
 </body>
 </html>

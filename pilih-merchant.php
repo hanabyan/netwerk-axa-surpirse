@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <script>
         const BASE_URL = 'http://localhost/netwerk/axasurprize';
-        const BASE_URL_API = 'http://192.168.1.72/axa';
+        const BASE_URL_API = 'http://11.11.11.110/axa';
 
         const urlParams = new URLSearchParams(window.location.search);
         const voucher = urlParams.get('v');
@@ -95,6 +95,12 @@
                 
                 const payload = {merchant: merchantId, voucher};
 
+                const selectedMerchant = merchantList.find(item => item.id == merchantId);
+
+                localStorage.setItem('merchantName', selectedMerchant.name);
+                localStorage.setItem('merchantAddress', selectedMerchant.address);
+                localStorage.setItem('merchantCity', selectedMerchant.city);
+
                 $.ajax({
                     url: `${BASE_URL_API}/campaign/user/${campaignId}/merchant`,
                     cache: false,
@@ -126,6 +132,9 @@
         
         const campaignId = localStorage.getItem('campaignId');
 
+        var merchantList;
+        var merchantSelected;
+
         $.ajax({
             url: `${BASE_URL_API}/campaign/merchant/${campaignId}?voucher=${voucher}`,
             cache: false,
@@ -133,10 +142,20 @@
                 let merchantOptions = '';
 
                 result.data.forEach(item => {
-                    merchantOptions = `${merchantOptions}<p data-store-id="${item.id}">${item.name}</p>`
+                    merchantOptions = `${merchantOptions}<p data-store-id="${item.id}" id="store-${item.id}">${item.name} (${item.city})</p>`
                 })
 
                 $('.list').html(merchantOptions);
+
+                merchantList = result.data;
+                merchantSelected = result.selected;
+
+                if (merchantSelected) {
+                    $('.content-wrap .list p').removeClass('active');	
+                    $('#store-' + merchantSelected).addClass('active');	
+                    $('#submitForm').removeClass('disabled');
+                    $('#merchant-form input').val(merchantSelected);
+                }
             },
             error: function(err){
                 if (err.status == 404){
